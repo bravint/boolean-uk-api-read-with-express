@@ -7,7 +7,7 @@ Build the the **getAll** and **getOneById** controllers and practice writing SQL
 1. Clone the repository that you forked for the previous exercise (https://github.com/boolean-uk/boolean-uk-api-create-with-express)
 2. In the root directory, type `npm install`, which installs dependencies for the project
 3. Create the file `.env` in the root directory. It should contain a single line, which contains the environment variable used to specify the url from the instance created in the previous exercise.
-4. Type `npm start`, which starts a development server that will reload whenever you make any changes to source files.
+4. Type `npm start`, which starts a development server that will reloads whenever you make any changes to source files.
 
 ## Instructions
 
