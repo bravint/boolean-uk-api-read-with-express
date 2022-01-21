@@ -75,7 +75,10 @@ function Book() {
 
     const getBookbyType = (type) => {
         const getBookbyType = `
-    SELECT * FROM books WHERE type LIKE $1;
+            SELECT * 
+            FROM books 
+            WHERE type 
+            LIKE $1;
         `;
 
         return db
@@ -88,7 +91,10 @@ function Book() {
         const columnName = Object.keys(query)[0];
         const columnValue = Object.values(query)[0];
         const getFilteredBookbyType = `
-    SELECT * FROM books WHERE type = $1 AND ${columnName} = $2;
+            SELECT * 
+            FROM books 
+            WHERE type = $1 
+            AND ${columnName} = $2;
         `;
         return db
             .query(getFilteredBookbyType, [type, columnValue])
@@ -103,6 +109,19 @@ function Book() {
         });
     };
 
+    getBookbyAuthor = (author) => {
+        const getBookbyAuthor = `
+            SELECT * 
+            FROM books 
+            WHERE author = $1 
+            ORDER BY publicationDate DESC; 
+        `;
+        return db
+            .query(getBookbyAuthor, [author.author])
+            .then((result) => result.rows)
+            .catch(console.error);
+    };
+
     return {
         init,
         createBook,
@@ -110,6 +129,7 @@ function Book() {
         getAllBooks,
         getBookbyType,
         getFilteredBookbyType,
+        getBookbyAuthor,
     };
 }
 

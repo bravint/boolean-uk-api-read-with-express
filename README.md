@@ -17,7 +17,7 @@ Build these routes and controllers for the **books** resource, which work with t
 - `/books/fiction?topic=a-topic` that returns a specific topic of fiction books
 - `/books/non-fiction` that return non-fiction books
 - `/books/non-fiction?topic=a-topic` that returns a specific topic of non-fiction books
-- `/books/author/name-of-author?order=recent` that returns a specific authors' books ordered by `publicationDate` with the most recent first (use ORDER in your SQL query)
+- `/books/author/name-of-author`?order=recent that returns a specific authors' books ordered by `publicationDate` with the most recent first (use ORDER in your SQL query)
 
 Build these routes and controllers for the **pets** resource, which work with the following `fetch` requests:
 

@@ -32,12 +32,16 @@ const getBookbyType = async (req, res) => {
 };
 
 const getBookbyAuthor = async (req, res) => {
-    
+    console.log(req)
+    const author = req.params
+    const response = await Book().getBookbyAuthor(author);
+    return res.json(response);
 }
 
 module.exports = {
     createBook,
     getAllBooks,
+    getBookbyAuthor,
     getBookById,
-    getBookbyType,
+    getBookbyType
 };
