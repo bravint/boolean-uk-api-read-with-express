@@ -71,21 +71,46 @@ function Book() {
             .query(getAll)
             .then((result) => result.rows)
             .catch(console.error);
-    }
+    };
+
+    const getBookbyType = (type) => {
+        const getBookbyType = `
+    SELECT * FROM books WHERE type LIKE $1;
+        `;
+
+        return db
+            .query(getBookbyType, [type])
+            .then((result) => result.rows)
+            .catch(console.error);
+    };
+
+    const getFilteredBookbyType = (type, query) => {
+        const columnName = Object.keys(query)[0];
+        const columnValue = Object.values(query)[0];
+        const getFilteredBookbyType = `
+    SELECT * FROM books WHERE type = $1 AND ${columnName} = $2;
+        `;
+        return db
+            .query(getFilteredBookbyType, [type, columnValue])
+            .then((result) => result.rows)
+            .catch(console.error);
+    };
 
     const init = () => {
-      createTable().then(() => {
-        console.log("\nCreating mock data for Books...\n");
-        mockData();
-      });
-  }
+        createTable().then(() => {
+            console.log('\nCreating mock data for Books...\n');
+            mockData();
+        });
+    };
 
     return {
-      init,
-      createBook,
-      getBookById,
-      getAllBooks,
-  }
+        init,
+        createBook,
+        getBookById,
+        getAllBooks,
+        getBookbyType,
+        getFilteredBookbyType,
+    };
 }
 
 module.exports = Book;

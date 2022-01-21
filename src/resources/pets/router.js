@@ -1,13 +1,33 @@
-const express = require("express");
+const express = require('express');
 
 const router = express.Router();
 
-const { createPet, getAllPets, getPetById } = require("./controller");
+const {
+    createPet,
+    getPets,
+    getPetsbyType,
+    getPetsTypeList,
+    getPetById,
+} = require('./controller');
 
-router.post("/", createPet);
+router.post('/', createPet);
 
-router.get("/", getAllPets);
+router.get('/', getPets);
 
-router.get("/:id", getPetById);
+router.get('/dog', getPetsbyType);
+
+router.get('/cat', getPetsbyType);
+
+router.get('/snake', getPetsbyType);
+
+router.get('/horse', getPetsbyType);
+
+router.get('/bird', getPetsbyType);
+
+router.get('/rabbit', getPetsbyType);
+
+router.get('/types', getPetsTypeList);
+
+router.get('/:id', getPetById);
 
 module.exports = router;
